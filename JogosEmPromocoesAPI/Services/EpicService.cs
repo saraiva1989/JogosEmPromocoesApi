@@ -35,7 +35,7 @@ namespace JogosEmPromocoesAPI.Services
                 new Game
                 {
                     Nome = element.title,
-                    Capa = element.keyImages.Where(x => x.type == "Thumbnail").FirstOrDefault().url,
+                    Capa = element.keyImages.Where(x => x.type == "DieselStoreFrontTall").FirstOrDefault().url,
                     Gratuito = false,
                     LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.urlSlug}",
                     Loja = "Epic",
