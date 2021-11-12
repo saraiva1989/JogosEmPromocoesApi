@@ -40,8 +40,8 @@ namespace JogosEmPromocoesAPI.Services
                     LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.urlSlug}",
                     Loja = "Epic",
                     Position = 0,
-                    PrecoOriginal = precoOriginal.ToString("n2"),
-                    precoDesconto = precoDesconto.ToString("n2"),
+                    PrecoOriginal = element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""),
+                    precoDesconto = element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""),
                     PercentualDesconto = TotalDesconto
                 });
             }
