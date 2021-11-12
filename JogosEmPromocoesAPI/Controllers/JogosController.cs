@@ -40,5 +40,11 @@ namespace JogosEmPromocoesAPI.Controllers
             return Ok(await gogService.ListarJogosPromocao(ordenacao, pagina));
         }
 
+        [HttpGet]
+        [Route("ping")]
+        public IActionResult ping()
+        {
+            return Ok(new {ping="ok"});
+        }
     }
 }
