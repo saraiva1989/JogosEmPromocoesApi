@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,8 +40,8 @@ namespace JogosEmPromocoesAPI.Services
                     LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.urlSlug}",
                     Loja = "Epic",
                     Position = 0,
-                    PrecoOriginal = precoOriginal,
-                    precoDesconto = precoDesconto,
+                    PrecoOriginal = precoOriginal.ToString("n2"),
+                    precoDesconto = precoDesconto.ToString("n2"),
                     PercentualDesconto = TotalDesconto
                 });
             }

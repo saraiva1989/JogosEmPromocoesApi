@@ -13,8 +13,8 @@ namespace JogosEmPromocoesAPI.Model
     {
         public string Nome { get; set; }
         public string Capa { get; set; }
-        public decimal PrecoOriginal { get; set; }
-        public decimal precoDesconto { get; set; }
+        public string PrecoOriginal { get; set; }
+        public string precoDesconto { get; set; }
         public int PercentualDesconto { get; set; }
         public string LinkLoja { get; set; }
         public string Loja { get; set; }

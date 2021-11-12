@@ -33,8 +33,8 @@ namespace JogosEmPromocoesAPI.Services
                     Nome = item.title,
                     PercentualDesconto = item.price.discountPercentage,
                     Position = 0,
-                    precoDesconto = item.price.amount,
-                    PrecoOriginal = item.price.baseAmount
+                    precoDesconto = item.price.amount.ToString("n2"),
+                    PrecoOriginal = item.price.baseAmount.ToString("n2")
                 });
             }
 
