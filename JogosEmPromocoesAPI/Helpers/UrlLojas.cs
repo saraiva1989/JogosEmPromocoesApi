@@ -47,16 +47,16 @@
             switch (ordenacao)
             {
                 case "popularidade":
-                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count={pagina}&dynamic_data=&sort_by=_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
+                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count=50&dynamic_data=&sort_by=_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
                     break;
                 case "preco":
-                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count={pagina}&dynamic_data=&sort_by=Price_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
+                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count=50&dynamic_data=&sort_by=Price_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
                     break;
                 case "nome":
-                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count={pagina}&dynamic_data=&sort_by=Name_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
+                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count=50&dynamic_data=&sort_by=Name_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
                     break;
                 default:
-                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count={pagina}&dynamic_data=&sort_by=_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
+                    url = $"https://store.steampowered.com/search/results/?query&start={pagina}&count=50&dynamic_data=&sort_by=_ASC&category1=998&snr=1_7_7_2300_7&specials=1&infinite=1";
                     break;
             }
             return url;
