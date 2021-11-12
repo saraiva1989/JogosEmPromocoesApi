@@ -37,7 +37,7 @@ namespace JogosEmPromocoesAPI.Services
                     Nome = element.title,
                     Capa = element.keyImages.Where(x => x.type == "OfferImageTall").FirstOrDefault().url,
                     Gratuito = false,
-                    LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.urlSlug}",
+                    LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.catalogNs.mappings.Where(x => x.pageType == "productHome").FirstOrDefault().pageSlug}",
                     Loja = "Epic",
                     Position = 0,
                     PrecoOriginal = element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""),
