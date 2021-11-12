@@ -1,4 +1,5 @@
-﻿using JogosEmPromocoesAPI.Helpers;
+﻿using HtmlAgilityPack;
+using JogosEmPromocoesAPI.Helpers;
 using JogosEmPromocoesAPI.Interfaces;
 using JogosEmPromocoesAPI.Model;
 using JogosEmPromocoesAPI.Model.Gog;
@@ -20,10 +21,12 @@ namespace JogosEmPromocoesAPI.Controllers
     {
         IEpicService epicService;
         IGogService gogService;
-        public JogosController(IEpicService epicService, IGogService gogService)
+        ISteamService steamService;
+        public JogosController(IEpicService epicService, IGogService gogService, ISteamService steamService)
         {
             this.epicService = epicService;
             this.gogService = gogService;
+            this.steamService = steamService;
         }
 
         [HttpGet]
@@ -38,6 +41,13 @@ namespace JogosEmPromocoesAPI.Controllers
         public async Task<IActionResult> Gog(string ordenacao, int pagina = 1)
         {
             return Ok(await gogService.ListarJogosPromocao(ordenacao, pagina));
+        }
+
+        [HttpGet]
+        [Route("steam")]
+        public async Task<IActionResult> Steam(string ordenacao, int pagina)
+        {
+            return Ok(await steamService.ListarJogosPromocao(ordenacao, pagina));
         }
 
         [HttpGet]

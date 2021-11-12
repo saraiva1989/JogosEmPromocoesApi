@@ -32,6 +32,7 @@ namespace JogosEmPromocoesAPI
             services.AddControllers();
             services.AddScoped<IEpicService, EpicService>();
             services.AddScoped<IGogService, GogService>();
+            services.AddScoped<ISteamService, SteamService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JogosEmPromocoesAPI", Version = "v1" });

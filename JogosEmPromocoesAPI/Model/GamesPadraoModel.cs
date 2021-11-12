@@ -6,7 +6,7 @@ namespace JogosEmPromocoesAPI.Model
     {
         public List<Game> Games { get; set; }
         public int Pagina { get; set; }
-        public int Total { get; set; }
+        public int TotalPagina { get; set; }
     }
 
     public class Game

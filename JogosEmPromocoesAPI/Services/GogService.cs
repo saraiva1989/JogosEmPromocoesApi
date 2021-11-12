@@ -39,7 +39,7 @@ namespace JogosEmPromocoesAPI.Services
             }
 
             gamesPadraoModels.Games = games;
-            gamesPadraoModels.Total = retorno.totalPages;
+            gamesPadraoModels.TotalPagina = retorno.totalPages;
             gamesPadraoModels.Pagina = pagina;
 
             return gamesPadraoModels;

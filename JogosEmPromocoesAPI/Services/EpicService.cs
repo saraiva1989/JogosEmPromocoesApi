@@ -15,13 +15,16 @@ namespace JogosEmPromocoesAPI.Services
     {
         public async Task<GamesPadraoModel> ListarJogosPromocao(string ordenacao, int pagina)
         {
-            var client = new RestClient(UrlLojas.Epic(ordenacao, pagina));
+            var client = new RestClient(UrlLojas.Epic(ordenacao, pagina*40));
             var request = new RestRequest(Method.GET);
             var response = await client.ExecuteAsync(request);
             var retorno = JsonConvert.DeserializeObject<EpicOriginalModel>(response.Content);
 
             GamesPadraoModel gamesPadraoModels = new GamesPadraoModel();
             List<Game> games = new List<Game>();
+
+            decimal quantidadePaginas = Math.Ceiling(Convert.ToDecimal(retorno.data.Catalog.searchStore.paging.total) / 40);
+
 
             var elementos = retorno.data.Catalog.searchStore.elements;
             foreach (var element in elementos)
@@ -47,8 +50,8 @@ namespace JogosEmPromocoesAPI.Services
             }
 
             gamesPadraoModels.Games = games;
-            gamesPadraoModels.Total = retorno.data.Catalog.searchStore.paging.total;
-            gamesPadraoModels.Pagina = retorno.data.Catalog.searchStore.paging.count;
+            gamesPadraoModels.TotalPagina = quantidadePaginas == 1 ? 0 : Convert.ToInt32(quantidadePaginas);
+            gamesPadraoModels.Pagina = pagina;
             return gamesPadraoModels;
         }
     }
