@@ -29,3 +29,14 @@ Caso não tenha a ISSUE e queira implementar algo, crie a ISSUE com o problema/i
 ## Não Sabe Programar
 Se você não é programador e quer contribuir, pode criar uma ISSUE com sua ideia de melhoria ou notificando um problema.
 
+
+# END-POINTS
+
+Segue a lista de endpoint do ambiente de DEV para cada loja:
+
+**GOG** - https://jogosempromocoesdev.azurewebsites.net/api/jogos/gog
+
+**STEAM** - https://jogosempromocoesdev.azurewebsites.net/api/jogos/steam
+
+**EPIC** - https://jogosempromocoesdev.azurewebsites.net/api/jogos/epic
+
