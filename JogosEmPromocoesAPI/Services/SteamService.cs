@@ -30,24 +30,30 @@ namespace JogosEmPromocoesAPI.Services
             var titulos = root.Descendants().Where(x => x.GetAttributeValue("class", "").Equals("title")).ToList();
             var imagens = root.Descendants("img").ToList();
             var linkloja = root.Descendants("a").ToList();
-            var precoOriginal = root.Descendants("strike").ToList();
-            var precoDesconto = root.Descendants().Where(x => x.GetAttributeValue("class", "").Equals("col search_price discounted responsive_secondrow")).ToList();
-            var percentualDisconto = root.Descendants().Where(x => x.GetAttributeValue("class", "").Equals("col search_discount responsive_secondrow")).ToList();
+            var valores = root.Descendants().Where(x => x.GetAttributeValue("class", "").Equals("col search_price_discount_combined responsive_secondrow")).ToList();
 
 
             for (int i = 0; i < titulos.Count(); i++)
             {
-                games.Add(new Game
+                bool valoresVazio = String.IsNullOrEmpty(valores[i].InnerText.Trim());
+                try
                 {
-                    Nome = titulos[i].InnerText,
-                    Capa = TratarImagem(imagens[i].Attributes["src"].Value),
-                    Gratuito = false,
-                    LinkLoja = linkloja[i].Attributes["href"].Value,
-                    Loja = "Steam",
-                    PercentualDesconto = Convert.ToInt32(percentualDisconto[i].InnerText.Replace('%', ' ').Trim()),
-                    precoDesconto = precoDesconto[i].InnerText.Split("R$")[2].Trim(),
-                    PrecoOriginal = precoOriginal[i].InnerText.Split("R$")[1].Trim(),
-                });
+                    games.Add(new Game
+                    {
+                        Nome = titulos[i].InnerText,
+                        Capa = TratarImagem(imagens[i].Attributes["src"].Value),
+                        Gratuito = false,
+                        LinkLoja = linkloja[i].Attributes["href"].Value,
+                        Loja = "Steam",
+                        PercentualDesconto = valoresVazio ? 0 : Convert.ToInt32(valores[i].InnerText.Split("%")[0].Trim()),
+                        precoDesconto = valoresVazio ? "indefinido" : valores[i].InnerText.Split("R$")[2].Trim(),
+                        PrecoOriginal = valoresVazio ? "indefinido" : valores[i].InnerText.Split("R$")[1].Trim(),
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             gamesPadraoModels.Games = games;
