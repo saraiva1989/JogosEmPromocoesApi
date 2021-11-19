@@ -123,7 +123,7 @@ namespace JogosEmPromocoesAPI.Model
         public string developerDisplayName { get; set; }
         public string publisherDisplayName { get; set; }
         public Price price { get; set; }
-        public DateTime releaseDate { get; set; }
+        public DateTime? releaseDate { get; set; }
         public DateTime? pcReleaseDate { get; set; }
     }
 
