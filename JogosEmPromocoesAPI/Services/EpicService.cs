@@ -29,24 +29,33 @@ namespace JogosEmPromocoesAPI.Services
             var elementos = retorno.data.Catalog.searchStore.elements;
             foreach (var element in elementos)
             {
-                decimal precoOriginal = Convert.ToDecimal(element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""));
-                decimal precoDesconto = Convert.ToDecimal(element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""));
-
-                int TotalDesconto = Convert.ToInt32((precoDesconto * 100) / precoOriginal - 1 * 100);
-
-                games.Add(
-                new Game
+                try
                 {
-                    Nome = element.title,
-                    Capa = element.keyImages.Where(x => x.type == "OfferImageTall").FirstOrDefault().url,
-                    Gratuito = false,
-                    LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.catalogNs.mappings.Where(x => x.pageType == "productHome").FirstOrDefault().pageSlug}",
-                    Loja = "Epic",
-                    Position = 0,
-                    PrecoOriginal = element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""),
-                    precoDesconto = element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""),
-                    PercentualDesconto = TotalDesconto
-                });
+                    decimal precoOriginal = Convert.ToDecimal(element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""));
+                    decimal precoDesconto = Convert.ToDecimal(element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""));
+
+                    int TotalDesconto = Convert.ToInt32((precoDesconto * 100) / precoOriginal - 1 * 100);
+
+                    games.Add(
+                    new Game
+                    {
+                        Nome = element.title,
+                        Capa = element.keyImages.Where(x => x.type == "OfferImageTall").FirstOrDefault().url,
+                        Gratuito = false,
+                        LinkLoja = $"https://www.epicgames.com/store/pt-BR/p/{element.catalogNs.mappings.Where(x => x.pageType == "productHome").FirstOrDefault().pageSlug}",
+                        Loja = "Epic",
+                        Position = 0,
+                        PrecoOriginal = element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""),
+                        precoDesconto = element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""),
+                        PercentualDesconto = TotalDesconto
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+               
             }
 
             gamesPadraoModels.Games = games;
