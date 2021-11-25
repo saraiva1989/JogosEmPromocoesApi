@@ -74,7 +74,7 @@
 
         public static string SteamNome(string nome)
         {
-            return $"https://store.steampowered.com/search/results/?query&start=50&count=50&dynamic_data=&sort_by=_ASC&term={nome}&snr=1_7_7_151_7&category1=998&infinite=1";
+            return $"https://store.steampowered.com/search/results/?query&start=0&count=50&dynamic_data=&sort_by=_ASC&term={nome}&snr=1_7_7_151_7&category1=998&infinite=1";
         }
     }
 }
