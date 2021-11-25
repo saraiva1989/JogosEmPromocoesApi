@@ -61,5 +61,20 @@
             }
             return url;
         }
+
+        public static string EpicNome(string nome)
+        {
+            return $"https://www.epicgames.com/graphql?operationName=searchStoreQuery&variables=%7B%22allowCountries%22:%22BR%22,%22category%22:%22games%2Fedition%2Fbase%7Csoftware%2Fedition%2Fbase%7Ceditors%7Cbundles%2Fgames%22,%22count%22:40,%22country%22:%22BR%22,%22keywords%22:%22{nome}%22,%22locale%22:%22pt-BR%22,%22sortBy%22:%22relevancy%22,%22sortDir%22:%22DESC%22,%22tag%22:%22%22,%22withPrice%22:true%7D&extensions=%7B%22persistedQuery%22:%7B%22version%22:1,%22sha256Hash%22:%220304d711e653a2914f3213a6d9163cc17153c60aef0ef52279731b02779231d2%22%7D%7D";
+        }
+
+        public static string GogNome(string nome)
+        {
+            return $"https://www.gog.com/games/ajax/filtered?hide=dlc&mediaType=game&page=1&search={nome}&sort=popularity";
+        }
+
+        public static string SteamNome(string nome)
+        {
+            return $"https://store.steampowered.com/search/results/?query&start=50&count=50&dynamic_data=&sort_by=_ASC&term={nome}&snr=1_7_7_151_7&category1=998&infinite=1";
+        }
     }
 }
