@@ -107,7 +107,7 @@ namespace JogosEmPromocoesAPI.Services
                     {
                         game.PercentualDesconto = 0;
                         game.precoDesconto = "0";
-                        game.PrecoOriginal = valores[i].InnerText.Split("R$")[1].Trim();
+                        game.PrecoOriginal = valoresVazio ? "indefinido" : valores[i].InnerText.Split("R$")[1].Trim();
                     }
                     else { 
                     game.PercentualDesconto = valoresVazio ? 0 : Convert.ToInt32(valores[i].InnerText.Split("%")[0].Trim());
