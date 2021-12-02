@@ -16,6 +16,7 @@ namespace JogosEmPromocoesAPI.Model
         public string Nome { get => nome; set => nome = value.ToUpper()
                 .Replace("™", "")
                 .Replace(":", "")
+                .Replace("®", "")
                 .Trim(); }
         public string Capa { get; set; }
         public string PrecoOriginal { get; set; }

@@ -46,8 +46,9 @@ namespace JogosEmPromocoesAPI.Services
                 {
                     decimal precoOriginal = Convert.ToDecimal(element.price.totalPrice.fmtPrice.originalPrice.Replace("R$ ", ""));
                     decimal precoDesconto = Convert.ToDecimal(element.price.totalPrice.fmtPrice.discountPrice.Replace("R$ ", ""));
-
-                    int TotalDesconto = Convert.ToInt32((precoDesconto * 100) / precoOriginal - 1 * 100);
+                    int TotalDesconto = 0;
+                    if (precoOriginal != 0)
+                        TotalDesconto = Convert.ToInt32((precoDesconto * 100) / precoOriginal - 1 * 100);
 
                     games.Add(
                     new Game
