@@ -3,11 +3,6 @@
 namespace JogosEmPromocoesAPI.Model.Gog
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-    public class Video
-    {
-        public string id { get; set; }
-        public string provider { get; set; }
-    }
 
     public class Price
     {
@@ -25,51 +20,10 @@ namespace JogosEmPromocoesAPI.Model.Gog
         public string promoId { get; set; }
     }
 
-    public class Availability
-    {
-        public bool isAvailable { get; set; }
-        public bool isAvailableInAccount { get; set; }
-    }
-
-    public class FromObject
-    {
-        public string date { get; set; }
-        public int timezone_type { get; set; }
-        public string timezone { get; set; }
-    }
-
-    public class ToObject
-    {
-        public string date { get; set; }
-        public int timezone_type { get; set; }
-        public string timezone { get; set; }
-    }
-
-    public class SalesVisibility
-    {
-        public bool isActive { get; set; }
-        public FromObject fromObject { get; set; }
-        public int from { get; set; }
-        public ToObject toObject { get; set; }
-        public int to { get; set; }
-    }
-
-    public class WorksOn
-    {
-        public bool Windows { get; set; }
-        public bool Mac { get; set; }
-        public bool Linux { get; set; }
-    }
-
     public class Product
     {
-        public List<object> customAttributes { get; set; }
         public string developer { get; set; }
         public string publisher { get; set; }
-        public List<string> gallery { get; set; }
-        public Video video { get; set; }
-        public List<string> supportedOperatingSystems { get; set; }
-        public List<string> genres { get; set; }
         public int? globalReleaseDate { get; set; }
         public bool isTBA { get; set; }
         public Price price { get; set; }
@@ -77,15 +31,12 @@ namespace JogosEmPromocoesAPI.Model.Gog
         public bool isInDevelopment { get; set; }
         public int id { get; set; }
         public int? releaseDate { get; set; }
-        public Availability availability { get; set; }
-        public SalesVisibility salesVisibility { get; set; }
         public bool buyable { get; set; }
         public string title { get; set; }
         public string image { get; set; }
         public string url { get; set; }
         public string supportUrl { get; set; }
         public string forumUrl { get; set; }
-        public WorksOn worksOn { get; set; }
         public string category { get; set; }
         public string originalCategory { get; set; }
         public int rating { get; set; }
@@ -96,14 +47,12 @@ namespace JogosEmPromocoesAPI.Model.Gog
         public bool isGame { get; set; }
         public string slug { get; set; }
         public bool isWishlistable { get; set; }
-        public List<object> extraInfo { get; set; }
         public int ageLimit { get; set; }
     }
 
     public class GogOriginalModel
     {
         public List<Product> products { get; set; }
-        public object ts { get; set; }
         public int page { get; set; }
         public int totalPages { get; set; }
         public string totalResults { get; set; }

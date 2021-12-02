@@ -11,7 +11,13 @@ namespace JogosEmPromocoesAPI.Model
 
     public class Game
     {
-        public string Nome { get; set; }
+        private string nome;
+
+        public string Nome { get => nome; set => nome = value.ToUpper()
+                .Replace("™", "")
+                .Replace(":", "")
+                .Replace("®", "")
+                .Trim(); }
         public string Capa { get; set; }
         public string PrecoOriginal { get; set; }
         public string precoDesconto { get; set; }
