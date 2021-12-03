@@ -40,16 +40,15 @@ namespace JogosEmPromocoesAPI.Controllers
         [Route("comparapreco")]
         public async Task<IActionResult> ComparaPreco(string nome)
         {
-            nome = new TermosBuscas().RetornaNomePorTermo(nome).Trim();
             List<Game> games = new List<Game>();
             GamesPadraoModel retorno = new GamesPadraoModel();
             var epic = await epicService.ListarJogosPorNome(nome);
             var gog = await gogService.ListarJogosPorNome(nome);
             var steam = await steamService.ListarJogosPorNome(nome);
-            games.AddRange(epic.Games.Where(x => x.Nome.ToUpper().Contains(nome.ToUpper())).Take(10));
-            games.AddRange(gog.Games.Where(x => x.Nome.ToUpper().Contains(nome.ToUpper())).Take(10));
-            games.AddRange(steam.Games.Where(x => x.Nome.ToUpper().Contains(nome.ToUpper())).Take(10));
-            retorno.Games = games.OrderBy(x => x.Nome).ToList();
+            games.AddRange(epic.Games.Take(20));
+            games.AddRange(gog.Games.Take(20));
+            games.AddRange(steam.Games.Take(20));
+            retorno.Games = games;
             return Ok(retorno);
         }
 
