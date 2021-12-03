@@ -40,7 +40,7 @@ namespace JogosEmPromocoesAPI.Controllers
         [Route("comparapreco")]
         public async Task<IActionResult> ComparaPreco(string nome)
         {
-            nome = new TermosBuscas().RetornaNomePorTermo(nome);
+            nome = new TermosBuscas().RetornaNomePorTermo(nome).Trim();
             List<Game> games = new List<Game>();
             GamesPadraoModel retorno = new GamesPadraoModel();
             var epic = await epicService.ListarJogosPorNome(nome);
