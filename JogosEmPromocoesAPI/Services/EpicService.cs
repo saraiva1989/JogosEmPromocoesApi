@@ -28,7 +28,8 @@ namespace JogosEmPromocoesAPI.Services
             var request = new RestRequest(Method.GET);
             var response = await client.ExecuteAsync(request);
             var retorno = JsonConvert.DeserializeObject<EpicOriginalModel>(response.Content);
-
+            if (retorno.data == null)
+                return null;
             return TratarDados(pagina, retorno);
         }
 
