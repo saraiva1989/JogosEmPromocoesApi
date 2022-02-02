@@ -38,7 +38,7 @@ namespace JogosEmPromocoesAPI.Services
         {
             GamesPadraoModel gamesPadraoModels = new GamesPadraoModel();
             List<Game> games = new List<Game>();
-            decimal quantidadePaginas = 2; //Math.Ceiling(Convert.ToDecimal(retorno.total_count) / 50);
+            decimal quantidadePaginas = 0; //Math.Ceiling(Convert.ToDecimal(retorno.total_count) / 50);
 
 
 
@@ -47,7 +47,7 @@ namespace JogosEmPromocoesAPI.Services
             var root = html.DocumentNode;
 
             var paginas = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//a[@class='css-1ns6940']");
-            pagina = paginas != null && paginas.Count() > 0 ? Convert.ToInt32(paginas.Where(x => x.InnerText != "").LastOrDefault().InnerText) : 0;
+            quantidadePaginas = paginas != null && paginas.Count() > 0 ? Convert.ToInt32(paginas.Where(x => x.InnerText != "").LastOrDefault().InnerText) : 0;
             var titulos = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//span[@class='css-2ucwu']");
             var disconto = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//div[@class='css-b0xoos']");
             var valores = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//div[@class='css-1rcj98u']");
