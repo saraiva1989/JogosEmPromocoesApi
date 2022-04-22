@@ -53,7 +53,7 @@ namespace JogosEmPromocoesAPI.Services
             var valores = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//div[@class='css-1rcj98u']");
             var valoresDisconto = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//span[@class='css-z3vg5b']");
             var linkloja = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//a[@class='css-1jx3eyg']");
-            var imagens = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//img[@class='css-10w32v9']");
+            var imagens = html.DocumentNode.SelectNodes("//div[@data-component='InnerBodyWithRightSidebar']//img[@class='css-13sgr0v']");
 
 
        
